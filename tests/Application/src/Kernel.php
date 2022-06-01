@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Sylius\InvoicingPlugin\Application;
 
+use Sylius\Calendar\SyliusCalendarBundle;
 use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
 use Sylius\Bundle\CoreBundle\Application\Kernel as SyliusKernel;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -125,7 +126,7 @@ final class Kernel extends BaseKernel
 
         if (SyliusKernel::MINOR_VERSION > 10) {
             $contents = array_merge(
-                ['Sylius\Calendar\SyliusCalendarBundle' => ['all' => true]],
+                [SyliusCalendarBundle::class => ['all' => true]],
                 $contents
             );
         }
@@ -141,9 +142,7 @@ final class Kernel extends BaseKernel
     {
         return array_filter(
             array_map(
-                static function (string $directory): string {
-                    return $directory . '/bundles.php';
-                },
+                static fn(string $directory): string => $directory . '/bundles.php',
                 $this->getConfigurationDirectories()
             ),
             'file_exists'

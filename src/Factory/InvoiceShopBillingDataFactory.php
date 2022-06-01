@@ -20,10 +20,9 @@ use Sylius\InvoicingPlugin\Entity\InvoiceShopBillingDataInterface;
 final class InvoiceShopBillingDataFactory implements InvoiceShopBillingDataFactoryInterface
 {
     /**
-     * @var string
      * @psalm-var class-string
      */
-    private $className;
+    private string $className;
 
     /**
      * @psalm-param class-string $className
