@@ -11,11 +11,8 @@ use Webmozart\Assert\Assert;
 
 final class ManagingChannelsContext implements Context
 {
-    private UpdatePageInterface $updatePage;
-
-    public function __construct(UpdatePageInterface $updatePage)
+    public function __construct(private UpdatePageInterface $updatePage)
     {
-        $this->updatePage = $updatePage;
     }
 
     /**

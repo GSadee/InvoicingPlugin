@@ -29,11 +29,8 @@ final class InvoiceVoter extends Voter
 
     private const ATTRIBUTES = [self::ACCESS];
 
-    private OrderRepositoryInterface $orderRepository;
-
-    public function __construct(OrderRepositoryInterface $orderRepository)
+    public function __construct(private OrderRepositoryInterface $orderRepository)
     {
-        $this->orderRepository = $orderRepository;
     }
 
     protected function supports($attribute, $subject): bool
@@ -63,12 +60,10 @@ final class InvoiceVoter extends Voter
             return false;
         }
 
-        switch ($attribute) {
-            case self::ACCESS:
-                return $this->canAccess($user, $subject);
-            default:
-                throw new \LogicException(sprintf('Unknown attribute "%s" passed.', $attribute));
-        }
+        return match ($attribute) {
+            self::ACCESS => $this->canAccess($user, $subject),
+            default => throw new \LogicException(sprintf('Unknown attribute "%s" passed.', $attribute)),
+        };
     }
 
     private function canAccess(UserInterface $user, InvoiceInterface $invoice): bool

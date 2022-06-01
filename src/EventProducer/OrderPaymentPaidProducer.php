@@ -23,20 +23,8 @@ use Webmozart\Assert\Assert;
 
 final class OrderPaymentPaidProducer
 {
-    private MessageBusInterface $eventBus;
-
-    private DateTimeProvider $dateTimeProvider;
-
-    private InvoiceRepositoryInterface $invoiceRepository;
-
-    public function __construct(
-        MessageBusInterface $eventBus,
-        DateTimeProvider $dateTimeProvider,
-        InvoiceRepositoryInterface $invoiceRepository
-    ) {
-        $this->eventBus = $eventBus;
-        $this->dateTimeProvider = $dateTimeProvider;
-        $this->invoiceRepository = $invoiceRepository;
+    public function __construct(private MessageBusInterface $eventBus, private DateTimeProvider $dateTimeProvider, private InvoiceRepositoryInterface $invoiceRepository)
+    {
     }
 
     public function __invoke(PaymentInterface $payment): void

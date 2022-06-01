@@ -27,28 +27,8 @@ use Webmozart\Assert\Assert;
 
 final class ResendInvoiceAction
 {
-    private InvoiceRepositoryInterface $invoiceRepository;
-
-    private OrderRepositoryInterface $orderRepository;
-
-    private InvoiceEmailSenderInterface $invoiceEmailSender;
-
-    private UrlGeneratorInterface $urlGenerator;
-
-    private Session $session;
-
-    public function __construct(
-        InvoiceRepositoryInterface $invoiceRepository,
-        InvoiceEmailSenderInterface $invoiceEmailSender,
-        OrderRepositoryInterface $orderRepository,
-        UrlGeneratorInterface $urlGenerator,
-        Session $session
-    ) {
-        $this->invoiceRepository = $invoiceRepository;
-        $this->invoiceEmailSender = $invoiceEmailSender;
-        $this->orderRepository = $orderRepository;
-        $this->urlGenerator = $urlGenerator;
-        $this->session = $session;
+    public function __construct(private InvoiceRepositoryInterface $invoiceRepository, private InvoiceEmailSenderInterface $invoiceEmailSender, private OrderRepositoryInterface $orderRepository, private UrlGeneratorInterface $urlGenerator, private Session $session)
+    {
     }
 
     public function __invoke(string $id): Response

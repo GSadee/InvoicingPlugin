@@ -10,14 +10,8 @@ use Sylius\InvoicingPlugin\Doctrine\ORM\InvoiceRepositoryInterface;
 
 final class GeneratingInvoiceContext implements Context
 {
-    private ObjectManager $invoiceManager;
-
-    private InvoiceRepositoryInterface $invoiceRepository;
-
-    public function __construct(ObjectManager $invoiceManager, InvoiceRepositoryInterface $invoiceRepository)
+    public function __construct(private ObjectManager $invoiceManager, private InvoiceRepositoryInterface $invoiceRepository)
     {
-        $this->invoiceManager = $invoiceManager;
-        $this->invoiceRepository = $invoiceRepository;
     }
 
     /**

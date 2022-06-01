@@ -60,7 +60,7 @@ final class InvoiceCreator implements InvoiceCreatorInterface
 
         try {
             $this->invoiceRepository->add($invoice);
-        } catch (ORMException $exception) {
+        } catch (ORMException) {
             $this->invoiceFileManager->remove($invoicePdf);
         }
     }

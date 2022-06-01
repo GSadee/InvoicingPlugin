@@ -16,28 +16,8 @@ use Webmozart\Assert\Assert;
 
 final class ManagingInvoicesContext implements Context
 {
-    private IndexPageInterface $indexPage;
-
-    private ShowPageInterface $showPage;
-
-    private OrderShowPageInterface $orderShowPage;
-
-    private InvoiceRepositoryInterface $invoiceRepository;
-
-    private NotificationCheckerInterface $notificationChecker;
-
-    public function __construct(
-        IndexPageInterface $indexPage,
-        ShowPageInterface $showPage,
-        OrderShowPageInterface $orderShowPage,
-        InvoiceRepositoryInterface $invoiceRepository,
-        NotificationCheckerInterface $notificationChecker
-    ) {
-        $this->indexPage = $indexPage;
-        $this->showPage = $showPage;
-        $this->orderShowPage = $orderShowPage;
-        $this->invoiceRepository = $invoiceRepository;
-        $this->notificationChecker = $notificationChecker;
+    public function __construct(private IndexPageInterface $indexPage, private ShowPageInterface $showPage, private OrderShowPageInterface $orderShowPage, private InvoiceRepositoryInterface $invoiceRepository, private NotificationCheckerInterface $notificationChecker)
+    {
     }
 
     /**

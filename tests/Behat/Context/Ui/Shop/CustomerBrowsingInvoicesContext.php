@@ -13,20 +13,8 @@ use Webmozart\Assert\Assert;
 
 final class CustomerBrowsingInvoicesContext implements Context
 {
-    private ShowPageInterface $orderShowPage;
-
-    private DownloadInvoicePageInterface $downloadInvoicePage;
-
-    private InvoiceRepositoryInterface $invoiceRepository;
-
-    public function __construct(
-        ShowPageInterface $orderShowPage,
-        DownloadInvoicePageInterface $downloadInvoicePage,
-        InvoiceRepositoryInterface $invoiceRepository
-    ) {
-        $this->orderShowPage = $orderShowPage;
-        $this->downloadInvoicePage = $downloadInvoicePage;
-        $this->invoiceRepository = $invoiceRepository;
+    public function __construct(private ShowPageInterface $orderShowPage, private DownloadInvoicePageInterface $downloadInvoicePage, private InvoiceRepositoryInterface $invoiceRepository)
+    {
     }
 
     /**

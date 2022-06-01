@@ -22,20 +22,8 @@ use Sylius\InvoicingPlugin\Entity\InvoiceInterface;
 
 final class SendInvoiceEmailHandler
 {
-    private InvoiceRepositoryInterface $invoiceRepository;
-
-    private OrderRepositoryInterface $orderRepository;
-
-    private InvoiceEmailSenderInterface $emailSender;
-
-    public function __construct(
-        InvoiceRepositoryInterface $invoiceRepository,
-        OrderRepositoryInterface $orderRepository,
-        InvoiceEmailSenderInterface $emailSender
-    ) {
-        $this->invoiceRepository = $invoiceRepository;
-        $this->orderRepository = $orderRepository;
-        $this->emailSender = $emailSender;
+    public function __construct(private InvoiceRepositoryInterface $invoiceRepository, private OrderRepositoryInterface $orderRepository, private InvoiceEmailSenderInterface $emailSender)
+    {
     }
 
     public function __invoke(SendInvoiceEmail $command): void

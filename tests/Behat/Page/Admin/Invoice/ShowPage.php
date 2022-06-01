@@ -11,17 +11,13 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class ShowPage extends SymfonyPage implements ShowPageInterface
 {
-    private TableAccessorInterface $tableAccessor;
-
     public function __construct(
         Session $session,
         $parameters,
         RouterInterface $router,
-        TableAccessorInterface $tableAccessor
+        private TableAccessorInterface $tableAccessor
     ) {
         parent::__construct($session, $parameters, $router);
-
-        $this->tableAccessor = $tableAccessor;
     }
 
     public function getIssuedAtDate(): \DateTimeInterface

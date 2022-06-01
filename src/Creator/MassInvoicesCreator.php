@@ -19,16 +19,8 @@ use Sylius\InvoicingPlugin\Exception\InvoiceAlreadyGenerated;
 
 final class MassInvoicesCreator implements MassInvoicesCreatorInterface
 {
-    private InvoiceCreatorInterface $invoiceCreator;
-
-    private DateTimeProvider $dateTimeProvider;
-
-    public function __construct(
-        InvoiceCreatorInterface $invoiceCreator,
-        DateTimeProvider $dateTimeProvider
-    ) {
-        $this->invoiceCreator = $invoiceCreator;
-        $this->dateTimeProvider = $dateTimeProvider;
+    public function __construct(private InvoiceCreatorInterface $invoiceCreator, private DateTimeProvider $dateTimeProvider)
+    {
     }
 
     public function __invoke(array $orders): void
@@ -37,7 +29,7 @@ final class MassInvoicesCreator implements MassInvoicesCreatorInterface
         foreach ($orders as $order) {
             try {
                 $this->invoiceCreator->__invoke($order->getNumber(), $this->dateTimeProvider->__invoke());
-            } catch (InvoiceAlreadyGenerated $exception) {
+            } catch (InvoiceAlreadyGenerated) {
                 continue;
             }
         }

@@ -16,8 +16,7 @@ namespace Sylius\InvoicingPlugin\Entity;
 /** @final */
 class InvoiceSequence implements InvoiceSequenceInterface
 {
-    /** @var mixed */
-    protected $id;
+    protected ?mixed $id = null;
 
     protected int $index = 0;
 

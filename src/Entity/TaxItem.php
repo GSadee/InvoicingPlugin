@@ -18,19 +18,12 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 /** @final */
 class TaxItem implements TaxItemInterface, ResourceInterface
 {
-    /** @var mixed */
-    protected $id;
+    protected ?mixed $id = null;
 
     protected ?InvoiceInterface $invoice = null;
 
-    protected string $label;
-
-    protected int $amount;
-
-    public function __construct(string $label, int $amount)
+    public function __construct(protected string $label, protected int $amount)
     {
-        $this->label = $label;
-        $this->amount = $amount;
     }
 
     public function getId()

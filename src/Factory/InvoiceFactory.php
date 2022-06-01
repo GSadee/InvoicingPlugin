@@ -24,19 +24,16 @@ use Sylius\InvoicingPlugin\Entity\InvoiceShopBillingDataInterface;
 final class InvoiceFactory implements InvoiceFactoryInterface
 {
     /**
-     * @psalm-var class-string
-     */
-    private string $className;
-
-    private FactoryInterface $invoiceShopBillingDataFactory;
-
-    /**
      * @psalm-param class-string $className
      */
-    public function __construct(string $className, FactoryInterface $invoiceShopBillingDataFactory)
+    public function __construct(
+        /**
+         * @psalm-var class-string
+         */
+        private string $className,
+        private FactoryInterface $invoiceShopBillingDataFactory
+    )
     {
-        $this->className = $className;
-        $this->invoiceShopBillingDataFactory = $invoiceShopBillingDataFactory;
     }
 
     public function createForData(

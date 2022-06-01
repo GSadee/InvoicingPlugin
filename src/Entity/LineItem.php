@@ -19,49 +19,12 @@ use Sylius\InvoicingPlugin\Exception\LineItemsCannotBeMerged;
 /** @final */
 class LineItem implements LineItemInterface, ResourceInterface
 {
-    /** @var mixed */
-    protected $id;
+    protected ?mixed $id = null;
 
     protected InvoiceInterface $invoice;
 
-    protected string $name;
-
-    protected ?string $variantName;
-
-    protected ?string $variantCode;
-
-    protected int $quantity;
-
-    protected int $unitPrice;
-
-    protected int $subtotal;
-
-    protected ?string $taxRate;
-
-    protected int $taxTotal;
-
-    protected int $total;
-
-    public function __construct(
-        string $name,
-        int $quantity,
-        int $unitPrice,
-        int $subtotal,
-        int $taxTotal,
-        int $total,
-        ?string $variantName = null,
-        ?string $variantCode = null,
-        ?string $taxRate = null
-    ) {
-        $this->name = $name;
-        $this->quantity = $quantity;
-        $this->unitPrice = $unitPrice;
-        $this->subtotal = $subtotal;
-        $this->taxTotal = $taxTotal;
-        $this->total = $total;
-        $this->variantName = $variantName;
-        $this->variantCode = $variantCode;
-        $this->taxRate = $taxRate;
+    public function __construct(protected string $name, protected int $quantity, protected int $unitPrice, protected int $subtotal, protected int $taxTotal, protected int $total, protected ?string $variantName = null, protected ?string $variantCode = null, protected ?string $taxRate = null)
+    {
     }
 
     public function getId()

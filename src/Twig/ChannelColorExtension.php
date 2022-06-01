@@ -19,11 +19,8 @@ use Twig\TwigFilter;
 
 final class ChannelColorExtension extends AbstractExtension
 {
-    private ChannelColorProviderInterface $channelColorProvider;
-
-    public function __construct(ChannelColorProviderInterface $channelColorProvider)
+    public function __construct(private ChannelColorProviderInterface $channelColorProvider)
     {
-        $this->channelColorProvider = $channelColorProvider;
     }
 
     public function getFilters(): array

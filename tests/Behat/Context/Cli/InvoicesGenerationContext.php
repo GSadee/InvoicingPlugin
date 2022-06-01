@@ -16,24 +16,8 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 final class InvoicesGenerationContext implements Context
 {
-    private KernelInterface $kernel;
-
-    private MassInvoicesCreatorInterface $massInvoicesCreator;
-
-    private InvoiceRepositoryInterface $invoiceRepository;
-
-    private OrderRepositoryInterface $orderRepository;
-
-    public function __construct(
-        KernelInterface $kernel,
-        MassInvoicesCreatorInterface $massInvoicesCreator,
-        InvoiceRepositoryInterface $invoiceRepository,
-        OrderRepositoryInterface $orderRepository
-    ) {
-        $this->kernel = $kernel;
-        $this->massInvoicesCreator = $massInvoicesCreator;
-        $this->invoiceRepository = $invoiceRepository;
-        $this->orderRepository = $orderRepository;
+    public function __construct(private KernelInterface $kernel, private MassInvoicesCreatorInterface $massInvoicesCreator, private InvoiceRepositoryInterface $invoiceRepository, private OrderRepositoryInterface $orderRepository)
+    {
     }
 
     /**
