@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Tests\Sylius\InvoicingPlugin\Behat\Context\Ui\Shop;
@@ -13,8 +22,11 @@ use Webmozart\Assert\Assert;
 
 final class CustomerBrowsingInvoicesContext implements Context
 {
-    public function __construct(private ShowPageInterface $orderShowPage, private DownloadInvoicePageInterface $downloadInvoicePage, private InvoiceRepositoryInterface $invoiceRepository)
-    {
+    public function __construct(
+        private ShowPageInterface $orderShowPage,
+        private DownloadInvoicePageInterface $downloadInvoicePage,
+        private InvoiceRepositoryInterface $invoiceRepository
+    ) {
     }
 
     /**

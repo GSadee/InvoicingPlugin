@@ -23,8 +23,10 @@ use Webmozart\Assert\Assert;
 
 final class RedirectToOrderShowAction
 {
-    public function __construct(private RouterInterface $router, private OrderRepositoryInterface $orderRepository)
-    {
+    public function __construct(
+        private RouterInterface $router,
+        private OrderRepositoryInterface $orderRepository
+    ) {
     }
 
     public function __invoke(Request $request): Response

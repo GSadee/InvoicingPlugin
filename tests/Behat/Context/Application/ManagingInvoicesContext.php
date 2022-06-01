@@ -1,11 +1,19 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Tests\Sylius\InvoicingPlugin\Behat\Context\Application;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\InvoicingPlugin\Doctrine\ORM\InvoiceRepositoryInterface;
 use Sylius\InvoicingPlugin\Entity\InvoiceInterface;
@@ -13,8 +21,10 @@ use Webmozart\Assert\Assert;
 
 final class ManagingInvoicesContext implements Context
 {
-    public function __construct(private string $invoicesSavePath, private InvoiceRepositoryInterface $invoiceRepository)
-    {
+    public function __construct(
+        private string $invoicesSavePath,
+        private InvoiceRepositoryInterface $invoiceRepository
+    ) {
     }
 
     /**
@@ -24,7 +34,7 @@ final class ManagingInvoicesContext implements Context
     {
         /** @var InvoiceInterface $invoice */
         $invoice = $this->invoiceRepository->findOneByOrder($order);
-        $filePath = $this->invoicesSavePath.'/'.str_replace('/', '_', $invoice->number()).'.pdf';
+        $filePath = $this->invoicesSavePath . '/' . str_replace('/', '_', $invoice->number()) . '.pdf';
 
         Assert::true(file_exists($filePath));
     }

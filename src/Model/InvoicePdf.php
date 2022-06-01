@@ -17,8 +17,10 @@ final class InvoicePdf
 {
     private ?string $fullPath = null;
 
-    public function __construct(private string $filename, private string $content)
-    {
+    public function __construct(
+        private string $filename,
+        private string $content
+    ) {
     }
 
     public function filename(): string

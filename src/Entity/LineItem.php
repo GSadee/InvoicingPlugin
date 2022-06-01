@@ -23,8 +23,17 @@ class LineItem implements LineItemInterface, ResourceInterface
 
     protected InvoiceInterface $invoice;
 
-    public function __construct(protected string $name, protected int $quantity, protected int $unitPrice, protected int $subtotal, protected int $taxTotal, protected int $total, protected ?string $variantName = null, protected ?string $variantCode = null, protected ?string $taxRate = null)
-    {
+    public function __construct(
+        protected string $name,
+        protected int $quantity,
+        protected int $unitPrice,
+        protected int $subtotal,
+        protected int $taxTotal,
+        protected int $total,
+        protected ?string $variantName = null,
+        protected ?string $variantCode = null,
+        protected ?string $taxRate = null
+    ) {
     }
 
     public function getId()

@@ -22,8 +22,10 @@ class TaxItem implements TaxItemInterface, ResourceInterface
 
     protected ?InvoiceInterface $invoice = null;
 
-    public function __construct(protected string $label, protected int $amount)
-    {
+    public function __construct(
+        protected string $label,
+        protected int $amount
+    ) {
     }
 
     public function getId()

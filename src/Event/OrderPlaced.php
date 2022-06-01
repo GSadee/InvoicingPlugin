@@ -17,8 +17,10 @@ final class OrderPlaced
 {
     private \DateTimeInterface $date;
 
-    public function __construct(private string $orderNumber, \DateTimeInterface $date)
-    {
+    public function __construct(
+        private string $orderNumber,
+        \DateTimeInterface $date
+    ) {
         $this->date = clone $date;
     }
 

@@ -20,8 +20,17 @@ class BillingData implements BillingDataInterface, ResourceInterface
 {
     protected int $id;
 
-    public function __construct(protected string $firstName, protected string $lastName, protected string $countryCode, protected string $street, protected string $city, protected string $postcode, protected ?string $provinceCode = null, protected ?string $provinceName = null, protected ?string $company = null)
-    {
+    public function __construct(
+        protected string $firstName,
+        protected string $lastName,
+        protected string $countryCode,
+        protected string $street,
+        protected string $city,
+        protected string $postcode,
+        protected ?string $provinceCode = null,
+        protected ?string $provinceName = null,
+        protected ?string $company = null
+    ) {
     }
 
     public function getId(): int

@@ -27,8 +27,7 @@ final class InvoiceShopBillingDataFactory implements InvoiceShopBillingDataFacto
          * @psalm-var class-string
          */
         private string $className
-    )
-    {
+    ) {
     }
 
     public function createNew(): InvoiceShopBillingDataInterface

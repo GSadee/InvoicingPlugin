@@ -23,8 +23,10 @@ use Webmozart\Assert\Assert;
 
 final class TaxItemsConverter implements TaxItemsConverterInterface
 {
-    public function __construct(private TaxRatePercentageProviderInterface $taxRatePercentageProvider, private TaxItemFactoryInterface $taxItemFactory)
-    {
+    public function __construct(
+        private TaxRatePercentageProviderInterface $taxRatePercentageProvider,
+        private TaxItemFactoryInterface $taxItemFactory
+    ) {
     }
 
     public function convert(OrderInterface $order): Collection

@@ -22,8 +22,14 @@ use Sylius\InvoicingPlugin\Entity\InvoiceSequenceInterface;
 
 final class SequentialInvoiceNumberGenerator implements InvoiceNumberGenerator
 {
-    public function __construct(private RepositoryInterface $sequenceRepository, private FactoryInterface $sequenceFactory, private EntityManagerInterface $sequenceManager, private DateTimeProvider $dateTimeProvider, private int $startNumber = 1, private int $numberLength = 9)
-    {
+    public function __construct(
+        private RepositoryInterface $sequenceRepository,
+        private FactoryInterface $sequenceFactory,
+        private EntityManagerInterface $sequenceManager,
+        private DateTimeProvider $dateTimeProvider,
+        private int $startNumber = 1,
+        private int $numberLength = 9
+    ) {
     }
 
     public function generate(): string

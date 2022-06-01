@@ -22,8 +22,10 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class OrderPlacedProducer
 {
-    public function __construct(private MessageBusInterface $eventBus, private DateTimeProvider $dateTimeProvider)
-    {
+    public function __construct(
+        private MessageBusInterface $eventBus,
+        private DateTimeProvider $dateTimeProvider
+    ) {
     }
 
     public function postPersist(LifecycleEventArgs $event): void

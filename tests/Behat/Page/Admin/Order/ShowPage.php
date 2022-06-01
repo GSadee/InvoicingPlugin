@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Tests\Sylius\InvoicingPlugin\Behat\Page\Admin\Order;
@@ -16,7 +25,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
 
     public function countRelatedInvoices(): int
     {
-        return count($this->getInvoicesList()) -1;
+        return count($this->getInvoicesList()) - 1;
     }
 
     public function clickOnFirstInvoiceId(): void

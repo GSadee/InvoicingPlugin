@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Tests\Sylius\InvoicingPlugin\Behat\Page\Admin\Invoice;
@@ -47,13 +56,13 @@ interface ShowPageInterface extends SymfonyPageInterface
 
     public function hasTotal(string $total, string $currencyCode): bool;
 
-	public function getChannel(): string;
+    public function getChannel(): string;
 
-	public function download(): void;
+    public function download(): void;
 
-	public function resend(): void;
+    public function resend(): void;
 
-	public function goBack(): void;
+    public function goBack(): void;
 
     public function isPaid(): bool;
 

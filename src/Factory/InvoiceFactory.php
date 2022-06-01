@@ -32,8 +32,7 @@ final class InvoiceFactory implements InvoiceFactoryInterface
          */
         private string $className,
         private FactoryInterface $invoiceShopBillingDataFactory
-    )
-    {
+    ) {
     }
 
     public function createForData(

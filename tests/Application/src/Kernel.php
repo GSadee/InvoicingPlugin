@@ -1,12 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Tests\Sylius\InvoicingPlugin\Application;
 
-use Sylius\Calendar\SyliusCalendarBundle;
 use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
 use Sylius\Bundle\CoreBundle\Application\Kernel as SyliusKernel;
+use Sylius\Calendar\SyliusCalendarBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -84,7 +93,7 @@ final class Kernel extends BaseKernel
         /** @var ContainerBuilder $container */
         Assert::isInstanceOf($container, ContainerBuilder::class);
         $locator = new FileLocator($this, $this->getProjectDir() . '/src/Resources');
-        $resolver = new LoaderResolver(array(
+        $resolver = new LoaderResolver([
             new XmlFileLoader($container, $locator),
             new YamlFileLoader($container, $locator),
             new IniFileLoader($container, $locator),
@@ -92,7 +101,8 @@ final class Kernel extends BaseKernel
             new GlobFileLoader($container, $locator),
             new DirectoryLoader($container, $locator),
             new ClosureLoader($container),
-        ));
+        ]);
+
         return new DelegatingLoader($resolver);
     }
 
@@ -100,7 +110,6 @@ final class Kernel extends BaseKernel
     {
         return str_starts_with($this->getEnvironment(), 'test');
     }
-
 
     private function loadContainerConfiguration(LoaderInterface $loader, string $confDir): void
     {
@@ -142,7 +151,7 @@ final class Kernel extends BaseKernel
     {
         return array_filter(
             array_map(
-                static fn(string $directory): string => $directory . '/bundles.php',
+                static fn (string $directory): string => $directory . '/bundles.php',
                 $this->getConfigurationDirectories()
             ),
             'file_exists'
